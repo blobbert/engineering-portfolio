@@ -3,13 +3,11 @@ import sitemap from '@astrojs/sitemap';
 import { unified } from '@astrojs/markdown-remark';
 import { basePathLinks } from './src/lib/remark-base-path.mjs';
 
-// Local defaults: replace these two values with your GitHub account and repo.
-// GitHub Actions automatically supplies GITHUB_REPOSITORY as owner/repo.
-const [owner, repo] = (process.env.GITHUB_REPOSITORY || 'username/repo-name').split('/');
-const base = repo.toLowerCase() === `${owner}.github.io`.toLowerCase() ? '/' : `/${repo}`;
+// GitHub Pages repository path, shared with the Markdown link helper.
+const base = '/engineering-portfolio/';
 
 export default defineConfig({
-  site: `https://${owner}.github.io`,
+  site: 'https://blobbert.github.io',
   base,
   output: 'static',
   trailingSlash: 'always',
