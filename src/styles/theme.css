@@ -19,8 +19,8 @@
   --card-hover-shadow: 0 10px 28px rgb(0 0 0 / .08);
   --hover-lift: -3px; --duration: 180ms;
   --line-height: 1.7;
-  --bg: #fafbf9; --surface: #ffffff; --text: #202924;
-  --muted: #58635d; --accent: #266647; --soft: #edf2ed; --border: #d4ddd5;
+  --bg: #f9fafc; --surface: #ffffff; --text: #1e2530;
+  --muted: #57606d; --accent: #1f5191; --soft: #e8eff8; --border: #d2dbe7;
   color-scheme: light;
 }
 :root[data-theme='blueprint'] {
@@ -41,8 +41,8 @@
   --card-hover-shadow: 6px 6px 0 var(--accent);
 }
 :root[data-mode='dark'] {
-  --bg: #151c19; --surface: #1c2621; --text: #edf2ee;
-  --muted: #b1bfb5; --accent: #a0d9b2; --soft: #27392e; --border: #3c5042;
+  --bg: #121a28; --surface: #192233; --text: #ecf1f8;
+  --muted: #afbccf; --accent: #8dbcf2; --soft: #233249; --border: #394a63;
   color-scheme: dark;
 }
 :root[data-theme='blueprint'][data-mode='dark'] {
