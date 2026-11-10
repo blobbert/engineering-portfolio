@@ -78,13 +78,12 @@ p { margin: 0 0 var(--space-4); }
 .skip-link:focus { transform: none; }
 .site-header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); flex-wrap: wrap; padding-block: var(--space-5); border-bottom: var(--border-width) solid var(--border); }
 .wordmark { font-weight: 650; display: inline-flex; gap: var(--space-3); align-items: center; }
-.brand-mark { display: grid; place-items: center; width: var(--space-6); height: var(--space-6); border: var(--border-width) solid var(--border); color: var(--accent); font-family: var(--font-mono); }
 .site-header a { color: var(--text); text-decoration: none; }
 nav { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-5); }
 nav a { padding-block: var(--space-2); font-size: var(--text-sm); }
 nav a[aria-current='page'] { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
 .mode-toggle, .filters button { min-height: 44px; border: var(--border-width) solid var(--border); background: var(--surface); color: var(--text); padding: var(--space-2) var(--space-4); border-radius: var(--pill-radius); font-size: var(--text-sm); }
-.mode-toggle[aria-pressed='true'], .filters button[aria-pressed='true'] { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+:root[data-mode='dark'] .mode-toggle, .filters button[aria-pressed='true'] { color: var(--bg); background: var(--accent); border-color: var(--accent); }
 .hero { display: flex; align-items: center; justify-content: space-between; gap: var(--space-7); padding-block: var(--space-9); }
 .hero h1 { font-size: clamp(3rem, 10vw, 6rem); }
 .eyebrow { display: block; color: var(--muted); text-transform: uppercase; letter-spacing: .14em; font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 500; }
@@ -157,6 +156,6 @@ nav a[aria-current='page'] { text-decoration: underline; text-decoration-color: 
 @media (prefers-reduced-motion: no-preference) {
   html[data-animations='true'] .project-card { transition: transform var(--duration), box-shadow var(--duration); }
   html[data-animations='true'] .project-card:hover { transform: translateY(var(--hover-lift)); box-shadow: var(--card-hover-shadow); }
-  html[data-animations='true'] .hero { animation: appear 400ms ease-out; }
+  html[data-animations='true'] .appear { animation: appear 400ms ease-out; }
   @keyframes appear { from { opacity: 0; transform: translateY(var(--space-2)); } to { opacity: 1; transform: none; } }
 }

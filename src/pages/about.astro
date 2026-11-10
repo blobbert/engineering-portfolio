@@ -5,6 +5,7 @@ import { withBase } from '../lib/urls';
 const contacts = siteConfig.socialLinks.filter(link => link.href);
 ---
 <BaseLayout title="About">
+  <div class="appear">
   <header class="page-heading"><p class="eyebrow">About</p><h1>{siteConfig.name}</h1><p class="lead">{siteConfig.tagline}</p></header>
   <div class="about-grid">
     <section aria-labelledby="bio-heading"><h2 id="bio-heading">A little about me</h2><p class="lead">{siteConfig.about.bio}</p></section>
@@ -12,4 +13,5 @@ const contacts = siteConfig.socialLinks.filter(link => link.href);
   </div>
   {siteConfig.about.timeline.length > 0 && <section class="content-section" aria-labelledby="experience-heading"><h2 id="experience-heading">Experience</h2><ol class="timeline">{siteConfig.about.timeline.map(item => <li><p class="eyebrow">{item.date}</p><h3>{item.title}</h3><p>{item.description}</p></li>)}</ol></section>}
   <section class="content-section" aria-labelledby="contact-heading"><h2 id="contact-heading">Get in touch</h2>{contacts.length ? <ul class="contact-list">{contacts.map(link => <li><a href={withBase(link.href)}>{link.label} ↗</a></li>)}</ul> : <p>Add your contact links in the site configuration.</p>}</section>
+  </div>
 </BaseLayout>

@@ -40,10 +40,10 @@ const contacts = siteConfig.socialLinks.filter(link => link.href);
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header container">
-      <a class="wordmark" href={withBase('/')}><span class="brand-mark" aria-hidden="true">+</span>{siteConfig.name}</a>
+      <a class="wordmark" href={withBase('/')}>{siteConfig.name}</a>
       <nav aria-label="Main navigation">
         {siteConfig.nav.map(item => <a href={withBase(item.href)} aria-current={Astro.url.pathname === withBase(item.href) ? 'page' : undefined}>{item.label}</a>)}
-        <button id="mode-toggle" class="mode-toggle" type="button" hidden aria-label="Dark mode" aria-pressed="false">Dark mode</button>
+        <button id="mode-toggle" class="mode-toggle" type="button" hidden>Dark mode</button>
       </nav>
     </header>
     <main id="main" class="container" tabindex="-1"><slot /></main>
@@ -55,9 +55,11 @@ const contacts = siteConfig.socialLinks.filter(link => link.href);
       const toggle = document.querySelector<HTMLButtonElement>('#mode-toggle');
       if (toggle) {
         const root = document.documentElement;
-        const sync = () => toggle.setAttribute('aria-pressed', String(root.dataset.mode === 'dark'));
-        toggle.hidden = false;
+        const sync = () => {
+          toggle.textContent = root.dataset.mode === 'dark' ? 'Light mode' : 'Dark mode';
+        };
         sync();
+        toggle.hidden = false;
         toggle.addEventListener('click', () => {
           root.dataset.mode = root.dataset.mode === 'dark' ? 'light' : 'dark';
           try { localStorage.setItem('portfolio-mode', root.dataset.mode); } catch {}
