@@ -1,0 +1,69 @@
+---
+import { siteConfig } from '../config';
+import { withBase } from '../lib/urls';
+import '../styles/theme.css';
+interface Props { title?: string; description?: string; image?: string; noindex?: boolean }
+const { title, description = siteConfig.description, image = withBase(siteConfig.ogImage), noindex = false } = Astro.props;
+const pageTitle = title ? `${title} · ${siteConfig.name}` : `${siteConfig.name} · Engineering portfolio`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const contacts = siteConfig.socialLinks.filter(link => link.href);
+---
+<!doctype html>
+<html lang="en" data-theme={siteConfig.appearance.theme} data-animations={String(siteConfig.appearance.animations)} data-default-mode={siteConfig.appearance.defaultMode}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>
+      // Run before painting; storage may be unavailable in private browsing.
+      (() => {
+        const root = document.documentElement;
+        let saved;
+        try { saved = localStorage.getItem('portfolio-mode'); } catch {}
+        const fallback = root.dataset.defaultMode;
+        root.dataset.mode = saved === 'dark' || saved === 'light' ? saved :
+          fallback === 'system' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : fallback;
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header container">
+      <a class="wordmark" href={withBase('/')}><span class="brand-mark" aria-hidden="true">+</span>{siteConfig.name}</a>
+      <nav aria-label="Main navigation">
+        {siteConfig.nav.map(item => <a href={withBase(item.href)} aria-current={Astro.url.pathname === withBase(item.href) ? 'page' : undefined}>{item.label}</a>)}
+        <button id="mode-toggle" class="mode-toggle" type="button" hidden aria-label="Dark mode" aria-pressed="false">Dark mode</button>
+      </nav>
+    </header>
+    <main id="main" class="container" tabindex="-1"><slot /></main>
+    <footer class="site-footer container">
+      <p>{siteConfig.footerText}</p>
+      {contacts.length > 0 && <nav aria-label="Contact links">{contacts.map(link => <a href={withBase(link.href)}>{link.label} <span aria-hidden="true">↗</span></a>)}</nav>}
+    </footer>
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('#mode-toggle');
+      if (toggle) {
+        const root = document.documentElement;
+        const sync = () => toggle.setAttribute('aria-pressed', String(root.dataset.mode === 'dark'));
+        toggle.hidden = false;
+        sync();
+        toggle.addEventListener('click', () => {
+          root.dataset.mode = root.dataset.mode === 'dark' ? 'light' : 'dark';
+          try { localStorage.setItem('portfolio-mode', root.dataset.mode); } catch {}
+          sync();
+        });
+      }
+    </script>
+  </body>
+</html>

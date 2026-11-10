@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { siteConfig } from '../config';
+import { withBase } from '../lib/urls';
+interface Props { project: CollectionEntry<'projects'> }
+const { project } = Astro.props;
+const { data } = project;
+---
+<li class="project-item" data-project-tags={JSON.stringify(data.tags)}>
+  <a class="project-card" href={withBase(`/projects/${project.id}/`)}>
+    <div class="card-image">
+      <Image src={data.cover} alt={data.coverAlt} widths={data.cover.format === 'svg' ? undefined : [480, 800, 1200]} sizes="(max-width: 640px) 100vw, 50vw" width={800} format={data.cover.format === 'svg' ? 'svg' : 'webp'} loading="lazy" />
+    </div>
+    <div class="card-body">
+      <span class="eyebrow">{data.featured ? 'Featured project' : 'Project'}</span>
+      <h3>{data.title}<span aria-hidden="true">↗</span></h3>
+      <p>{data.summary}</p>
+      {siteConfig.projects.showTags && <ul class="tags" aria-label="Project tags">{data.tags.map(tag => <li>{tag}</li>)}</ul>}
+    </div>
+  </a>
+</li>
