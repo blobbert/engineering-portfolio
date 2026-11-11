@@ -16,11 +16,11 @@ const links = Object.entries(data.links ?? {}).filter(([, href]) => href);
 const labels: Record<string, string> = { github: 'Source on GitHub', demo: 'View demo', report: 'Read report' };
 ---
 <BaseLayout title={data.title} description={data.summary} image={data.cover.src}>
-  <article class="appear">
+  <article>
     <header class="page-heading project-heading">
       <a class="back-link" href={withBase('/')}>← All projects</a>
       <p class="eyebrow"><time datetime={data.date.toISOString()}>{data.date.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time></p>
-      <h1>{data.title}</h1><p class="lead">{data.summary}</p>
+      <h1 class="appear">{data.title}</h1><p class="lead">{data.summary}</p>
       {siteConfig.projects.showTags && <ul class="tags" aria-label="Project tags">{data.tags.map(tag => <li>{tag}</li>)}</ul>}
       {links.length > 0 && <nav class="project-links" aria-label="Project resources">{links.map(([label, href]) => <a href={withBase(href!)}>{labels[label]} ↗</a>)}</nav>}
     </header>
