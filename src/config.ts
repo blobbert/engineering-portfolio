@@ -1,10 +1,10 @@
-// Edit your personal information here. All text below is placeholder content.
+// Edit your personal information here.
 export const siteConfig = {
-  name: "Jiajie's Portfolio",
-  tagline: 'Your engineering focus, in one sentence.',
-  description: "Jiajie's engineering portfolio.",
+  name: 'Jiajie (George) Xue',
+  tagline: 'Mechanical Engineering student at the University of Toronto · Mech 2T9 + PEY.',
+  description: "Jiajie (George) Xue's engineering portfolio.",
   eyebrow: 'Engineering portfolio',
-  footerText: "Jiajie's Portfolio · Engineering portfolio",
+  footerText: 'Jiajie (George) Xue · Engineering portfolio',
   // Paths here are relative to public/. Leave photo null to hide it.
   photo: null as null | { src: string; alt: string },
   ogImage: '/images/social-placeholder.png',

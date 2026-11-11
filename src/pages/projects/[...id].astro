@@ -16,7 +16,7 @@ const links = Object.entries(data.links ?? {}).filter(([, href]) => href);
 const labels: Record<string, string> = { github: 'Source on GitHub', demo: 'View demo', report: 'Read report' };
 ---
 <BaseLayout title={data.title} description={data.summary} image={data.cover.src}>
-  <article>
+  <article class="appear">
     <header class="page-heading project-heading">
       <a class="back-link" href={withBase('/')}>← All projects</a>
       <p class="eyebrow"><time datetime={data.date.toISOString()}>{data.date.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time></p>
