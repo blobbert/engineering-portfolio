@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { siteConfig } from '../../config';
+const projects = (await getCollection('projects')).sort((a, b) =>
+  Number(b.data.featured) - Number(a.data.featured) ||
+  b.data.date.valueOf() - a.data.date.valueOf() ||
+  (a.data.order ?? Infinity) - (b.data.order ?? Infinity) || a.id.localeCompare(b.id)
+);
+const tags = [...new Set(projects.flatMap(project => project.data.tags))].sort();
+---
+<BaseLayout title="Projects">
+  <header class="page-heading appear"><p class="eyebrow">Portfolio</p><h1>All projects</h1><p class="lead">Explore my work in design, prototyping, and testing. Filter by topic or open a project to read about the process.</p></header>
+  <section class="projects-section" aria-labelledby="projects-title">
+    <div class="section-heading"><h2 id="projects-title">Projects</h2><p class="project-count" id="project-count" aria-live="polite" aria-atomic="true">{projects.length} projects</p></div>
+    <div class="filters" id="project-filters" role="group" aria-label="Filter projects by tag" hidden>
+      <button type="button" data-filter="" aria-pressed="true">All projects</button>
+      {tags.map(tag => <button type="button" data-filter={tag} aria-pressed="false">{tag}</button>)}
+    </div>
+    <ul class:list={['project-grid', siteConfig.projects.layout]} data-columns={siteConfig.projects.columns}>
+      {projects.map(project => <ProjectCard project={project} detailed />)}
+    </ul>
+    {projects.length === 0 && <p>No projects yet.</p>}
+  </section>
+  <script>
+    const filters = document.querySelector<HTMLElement>('#project-filters');
+    const cards = [...document.querySelectorAll<HTMLElement>('[data-project-tags]')];
+    if (filters && cards.length) {
+      filters.hidden = false;
+      filters.addEventListener('click', event => {
+        const button = (event.target as HTMLElement).closest<HTMLButtonElement>('button[data-filter]');
+        if (!button) return;
+        const selected = button.dataset.filter;
+        filters.querySelectorAll('button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+        let count = 0;
+        cards.forEach(card => {
+          card.hidden = !!selected && !JSON.parse(card.dataset.projectTags || '[]').includes(selected);
+          if (!card.hidden) count++;
+        });
+        const status = document.querySelector('#project-count');
+        if (status) status.textContent = `${count} ${count === 1 ? 'project' : 'projects'}`;
+      });
+    }
+  </script>
+</BaseLayout>

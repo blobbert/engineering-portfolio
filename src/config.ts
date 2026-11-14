@@ -9,7 +9,8 @@ export const siteConfig = {
   photo: null as null | { src: string; alt: string },
   ogImage: '/images/social-placeholder.png',
   nav: [
-    { label: 'Projects', href: '/' },
+    { label: 'Home', href: '/' },
+    { label: 'Projects', href: '/projects/' },
     { label: 'About', href: '/about/' },
   ],
   // Add actual URLs to show contact links; empty URLs are hidden.
@@ -29,8 +30,8 @@ export const siteConfig = {
     showTags: true,
   },
   about: {
-    bio: 'Add a short bio here: your engineering interests, what you enjoy working on, and what you want to learn next.',
-    skills: ['Add a skill', 'Add a tool', 'Add an area of interest'],
+    bio: 'I’m interested in turning ideas into practical designs through CAD, prototyping, testing, and iteration. This portfolio is a growing collection of the projects I’ve worked on and what I learned while building them.',
+    skills: ['CAD', '3D printing', 'Prototyping', 'Testing and iteration'],
     // Add entries to display the optional experience section.
     timeline: [] as { date: string; title: string; description: string }[],
   },

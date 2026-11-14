@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import portrait from '../assets/jiajie-xue-portrait.jpeg';
 import { siteConfig } from '../config';
 import { withBase } from '../lib/urls';
 const contacts = siteConfig.socialLinks.filter(link => link.href);
@@ -7,6 +9,7 @@ const contacts = siteConfig.socialLinks.filter(link => link.href);
 <BaseLayout title="About">
   <div class="appear">
   <header class="page-heading"><p class="eyebrow">About</p><h1>{siteConfig.name}</h1><p class="lead">{siteConfig.tagline}</p></header>
+  <Image class="about-photo" src={portrait} alt="Jiajie Xue smiling outdoors in a park" width={720} />
   <div class="about-grid">
     <section aria-labelledby="bio-heading"><h2 id="bio-heading">A little about me</h2><p class="lead">{siteConfig.about.bio}</p></section>
     <section aria-labelledby="skills-heading"><h2 id="skills-heading">Skills & tools</h2><ul class="skills">{siteConfig.about.skills.map(skill => <li>{skill}</li>)}</ul></section>

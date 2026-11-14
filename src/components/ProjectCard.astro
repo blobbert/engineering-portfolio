@@ -3,8 +3,8 @@ import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import { siteConfig } from '../config';
 import { withBase } from '../lib/urls';
-interface Props { project: CollectionEntry<'projects'> }
-const { project } = Astro.props;
+interface Props { project: CollectionEntry<'projects'>; detailed?: boolean }
+const { project, detailed = false } = Astro.props;
 const { data } = project;
 ---
 <li class="project-item" data-project-tags={JSON.stringify(data.tags)}>
@@ -15,7 +15,9 @@ const { data } = project;
     <div class="card-body">
       <span class="eyebrow">{data.featured ? 'Featured project' : 'Project'}</span>
       <h3>{data.title}<span aria-hidden="true">↗</span></h3>
+      {detailed && <p><time datetime={data.date.toISOString()}>{data.date.toLocaleDateString('en', { month: 'long', year: 'numeric', timeZone: 'UTC' })}</time></p>}
       <p>{data.summary}</p>
+      {detailed && <span class="text-link">Read project →</span>}
       {siteConfig.projects.showTags && <ul class="tags" aria-label="Project tags">{data.tags.map(tag => <li>{tag}</li>)}</ul>}
     </div>
   </a>
