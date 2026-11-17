@@ -31,7 +31,7 @@ export const siteConfig = {
   },
   about: {
     bio: 'I’m interested in turning ideas into practical designs through CAD, prototyping, testing, and iteration. This portfolio is a growing collection of the projects I’ve worked on and what I learned while building them.',
-    skills: ['CAD', '3D printing', 'Prototyping', 'Testing and iteration'],
+    skills: ['CAD', '3D printing', 'Prototyping', 'Engineering analysis'],
     // Add entries to display the optional experience section.
     timeline: [] as { date: string; title: string; description: string }[],
   },

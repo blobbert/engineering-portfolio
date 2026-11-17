@@ -19,7 +19,7 @@ const collageProjects = ['utat-sae', 'brush-and-sponge-holder', 'digilux']
     </div>
     <nav class="project-collage" aria-label="Explore selected projects">
       {collageProjects.map(project => (
-        <a class="collage-tile" href={withBase(`/projects/${project.id}/`)} aria-label={`View ${project.data.title}`}>
+        <a class={`collage-tile collage-tile-${project.id}`} href={withBase(`/projects/${project.id}/`)} aria-label={`View ${project.data.title}`}>
           <Image src={project.data.cover} alt={project.data.coverAlt} width={800}
             widths={project.data.cover.format === 'svg' ? undefined : [400, 800]}
             sizes="(min-width: 992px) 25vw, 60vw"
