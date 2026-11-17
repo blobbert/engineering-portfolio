@@ -6,7 +6,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import { withBase } from '../lib/urls';
 const allProjects = await getCollection('projects');
 const projects = allProjects.filter(p => p.data.featured).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 4);
-const collageProjects = ['utat-sae', 'brush-and-sponge-holder', 'digilux']
+const collageProjects = ['utat-sae', 'fpv-drone', 'digilux']
   .flatMap(id => allProjects.filter(project => project.id === id));
 ---
 <BaseLayout>
