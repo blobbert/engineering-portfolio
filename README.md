@@ -1,4 +1,4 @@
-﻿# Jiajie's Engineering Portfolio
+﻿# George Xue's Engineering Portfolio
 
 A personal website showcasing engineering projects, interests, and skills.
 
