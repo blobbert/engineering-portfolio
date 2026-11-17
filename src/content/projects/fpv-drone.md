@@ -2,7 +2,7 @@
 title: 'FPV Drone'
 summary: 'Researching compatible components, soldering the electronics, and assembling an FPV drone from parts, followed by an attempt to add GPS waypoint navigation.'
 date: 2026-08-01
-tags: ['Electronics', 'Soldering', 'Assembly', 'Component Selection']
+tags: ['Electronics']
 cover: './images/fpv-drone/assembled-drone.jpeg'
 coverAlt: 'Assembled FPV quadcopter on a workbench with a carbon-fibre frame, teal three-blade propellers, and yellow mounts'
 featured: true

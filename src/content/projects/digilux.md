@@ -2,7 +2,7 @@
 title: 'DigiLux — Portable Light Therapy Device'
 summary: 'Designing and building a phone case with a folding LED panel for APS112, from CAD and circuit design to a working battery-powered showcase prototype.'
 date: 2026-04-07
-tags: ['CAD', '3D Printing', 'Electronics', 'Prototyping', 'Testing']
+tags: ['CAD', '3D Printing', 'Electronics']
 cover: './images/digilux/illuminated-prototype.jpeg'
 coverAlt: 'DigiLux prototype held open on a workbench with its LED panel illuminated above the 3D-printed phone case'
 featured: true

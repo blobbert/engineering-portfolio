@@ -2,7 +2,7 @@
 title: 'Brush and Sponge Holder'
 summary: 'A 3D-printed holder for my dish brush and sponge, designed to sit over the divider between my kitchen sinks and give them a place to drain and dry.'
 date: 2026-09-08
-tags: ['CAD', '3D Printing', 'Prototyping']
+tags: ['CAD', '3D Printing']
 cover: './images/brush-and-sponge-holder/cad-render.png'
 coverAlt: 'CAD model of a sink-divider mount with a cylindrical brush holder and an open-sided sponge basket'
 featured: true

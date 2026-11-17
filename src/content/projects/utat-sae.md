@@ -2,7 +2,7 @@
 title: 'UTAT UAS SAE — Aircraft Design & Development'
 summary: 'Building and repairing UT26 Maple, researching fuselage manufacturing, and developing structural components for UT27 Aurora with the UTAT UAS SAE Structures subteam.'
 date: 2026-11-14
-tags: ['CAD', 'Manufacturing', 'Structural Analysis', 'Python', 'Prototyping']
+tags: ['CAD', 'Manufacturing', 'Structural Analysis']
 cover: './images/utat-sae/maple-flight-test.jpeg'
 coverAlt: 'UT26 Maple on its landing gear at an outdoor flight test, viewed from the front'
 featured: true
