@@ -5,6 +5,7 @@ export const siteConfig = {
   description: "George Xue's engineering portfolio.",
   eyebrow: 'Engineering portfolio',
   footerText: 'George Xue · Engineering portfolio',
+  location: 'Toronto, Canada',
   // Paths here are relative to public/. Leave photo null to hide it.
   photo: null as null | { src: string; alt: string },
   ogImage: '/images/social-placeholder.png',
@@ -15,9 +16,10 @@ export const siteConfig = {
   ],
   // Add actual URLs to show contact links; empty URLs are hidden.
   socialLinks: [
-    { label: 'Email', href: '' }, // e.g. mailto:you@example.com
-    { label: 'GitHub', href: '' },
-    { label: 'LinkedIn', href: '' },
+    { label: 'Email', text: 'george.xue2007@hotmail.com', href: 'mailto:george.xue2007@hotmail.com' },
+    { label: 'Phone', text: '+1 (647) 612-0838', href: 'tel:+16476120838' },
+    { label: 'GitHub', text: 'GitHub', href: '' },
+    { label: 'LinkedIn', text: 'LinkedIn', href: 'https://www.linkedin.com/in/george-xue-2640b1384/' },
   ],
   appearance: {
     theme: 'minimal' as 'minimal' | 'blueprint' | 'earth' | 'bold',
@@ -30,8 +32,18 @@ export const siteConfig = {
     showTags: true,
   },
   about: {
-    bio: 'I’m interested in turning ideas into practical designs through CAD, prototyping, testing, and iteration. This portfolio is a growing collection of the projects I’ve worked on and what I learned while building them.',
-    skills: ['CAD', '3D printing', 'Prototyping', 'Engineering analysis'],
+    bio: [
+      'I’m a second-year Mechanical Engineering student at U of T with an interest in autonomous drones and robotics. As part of the University of Toronto Aerospace Team’s Unmanned Aerial Systems division, I help build our aircraft for the SAE Aero Design competition. My work includes building the fuselage, designing smaller aircraft components, creating laser-cutting templates, and 3D printing parts.',
+      'I enjoy the creativity of turning ideas into practical designs, whether for our aircraft or everyday improvements around the house. Outside of engineering projects, I mentor younger students and have taught with Jr. DEEP Engineering Outreach to help spark their interest in STEM.',
+    ],
+    skills: [
+      '2D & 3D CAD — SolidWorks, AutoCAD',
+      'Machining — mills & lathes',
+      'Rapid prototyping & 3D printing',
+      'Engineering analysis & testing',
+      'Soldering & circuit design',
+      'Project management & team communication',
+    ],
     // Add entries to display the optional experience section.
     timeline: [] as { date: string; title: string; description: string }[],
   },

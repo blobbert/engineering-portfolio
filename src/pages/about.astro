@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactIcon from '../components/ContactIcon.astro';
 import { Image } from 'astro:assets';
 import portrait from '../assets/george-xue-portrait.jpeg';
 import { siteConfig } from '../config';
@@ -11,11 +12,11 @@ const contacts = siteConfig.socialLinks.filter(link => link.href);
   <header class="page-heading"><p class="eyebrow">About</p><h1>{siteConfig.name}</h1><p class="lead">{siteConfig.tagline}</p></header>
   <div class="about-grid">
     <Image class="about-photo" src={portrait} alt="George Xue smiling outdoors in a park" width={720} />
-    <section aria-labelledby="bio-heading"><h2 id="bio-heading">About me</h2><p class="lead">{siteConfig.about.bio}</p></section>
+    <section aria-labelledby="bio-heading"><h2 id="bio-heading">About me</h2>{siteConfig.about.bio.map(paragraph => <p class="lead">{paragraph}</p>)}</section>
     <section aria-labelledby="skills-heading"><h2 id="skills-heading">Skills & tools</h2><ul class="skills">{siteConfig.about.skills.map(skill => <li>{skill}</li>)}</ul></section>
     <section aria-labelledby="awards-heading"><h2 id="awards-heading">Certificates & awards</h2><div class="awards-placeholder"><p>Certificates and awards coming soon.</p></div></section>
   </div>
   {siteConfig.about.timeline.length > 0 && <section class="content-section" aria-labelledby="experience-heading"><h2 id="experience-heading">Experience</h2><ol class="timeline">{siteConfig.about.timeline.map(item => <li><p class="eyebrow">{item.date}</p><h3>{item.title}</h3><p>{item.description}</p></li>)}</ol></section>}
-  <section class="content-section" aria-labelledby="contact-heading"><h2 id="contact-heading">Get in touch</h2>{contacts.length ? <ul class="contact-list">{contacts.map(link => <li><a href={withBase(link.href)}>{link.label} ↗</a></li>)}</ul> : <p>Add your contact links in the site configuration.</p>}</section>
+  <section class="content-section" aria-labelledby="contact-heading"><h2 id="contact-heading">Get in touch</h2><p>Based in {siteConfig.location}.</p>{contacts.length ? <ul class="contact-list">{contacts.map(link => <li><a class="contact-link" href={withBase(link.href)}><ContactIcon href={link.href} /><span>{link.text}</span></a></li>)}</ul> : <p>Add your contact links in the site configuration.</p>}</section>
   </div>
 </BaseLayout>

@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from '../config';
+import ContactIcon from '../components/ContactIcon.astro';
 import { withBase } from '../lib/urls';
 import '../styles/theme.css';
 interface Props { title?: string; description?: string; image?: string; noindex?: boolean }
@@ -49,7 +50,7 @@ const contacts = siteConfig.socialLinks.filter(link => link.href);
     <main id="main" class="container" tabindex="-1"><slot /></main>
     <footer class="site-footer container">
       <p>{siteConfig.footerText}</p>
-      {contacts.length > 0 && <nav aria-label="Contact links">{contacts.map(link => <a href={withBase(link.href)}>{link.label} <span aria-hidden="true">↗</span></a>)}</nav>}
+      {contacts.length > 0 && <nav aria-label="Contact links">{contacts.map(link => <a class="contact-link" href={withBase(link.href)}><ContactIcon href={link.href} /><span>{link.label}</span></a>)}</nav>}
     </footer>
     <script>
       const toggle = document.querySelector<HTMLButtonElement>('#mode-toggle');

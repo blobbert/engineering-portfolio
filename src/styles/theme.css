@@ -153,7 +153,9 @@ nav a[aria-current='page'] { text-decoration: underline; text-decoration-color: 
 .content-section { padding-block: var(--space-7); border-top: var(--border-width) solid var(--border); }
 .timeline { list-style: none; padding: 0; }
 .timeline li { border-left: var(--border-width) solid var(--border); padding: 0 0 var(--space-6) var(--space-5); }
-.contact-list { display: flex; gap: var(--space-5); flex-wrap: wrap; list-style: none; padding: 0; }
+.contact-list { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); list-style: none; padding: 0; }
+.contact-link { display: inline-flex; align-items: center; gap: var(--space-2); }
+.contact-icon { width: 1.1em; height: 1.1em; flex-shrink: 0; }
 .back-link { display: inline-block; margin-bottom: var(--space-7); }
 .project-links { margin-top: var(--space-5); }
 .project-cover { width: 100%; max-height: 38rem; object-fit: cover; border-radius: var(--radius); border: var(--border-width) solid var(--border); }
