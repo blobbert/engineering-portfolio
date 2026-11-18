@@ -3,11 +3,12 @@ import { siteConfig } from '../config';
 import ContactIcon from '../components/ContactIcon.astro';
 import { withBase } from '../lib/urls';
 import '../styles/theme.css';
-interface Props { title?: string; description?: string; image?: string; noindex?: boolean }
+interface Props { title?: string; description?: string; image?: string; imageAlt?: string; noindex?: boolean }
 const { title, description = siteConfig.description, image = withBase(siteConfig.ogImage), noindex = false } = Astro.props;
 const pageTitle = title ? `${title} · ${siteConfig.name}` : `${siteConfig.name} · Engineering portfolio`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const contacts = siteConfig.socialLinks.filter(link => link.href);
+const imageAlt = Astro.props.imageAlt ?? (Astro.props.image ? pageTitle : siteConfig.ogImageAlt);
 ---
 <!doctype html>
 <html lang="en" data-theme={siteConfig.appearance.theme} data-animations={String(siteConfig.appearance.animations)} data-default-mode={siteConfig.appearance.defaultMode}>
@@ -24,8 +25,14 @@ const contacts = siteConfig.socialLinks.filter(link => link.href);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:image:alt" content={imageAlt} />
+    {!Astro.props.image && <><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /><meta property="og:image:type" content="image/png" /></>}
     <meta property="og:site_name" content={siteConfig.name} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site)} />
+    <meta name="twitter:image:alt" content={imageAlt} />
     <script is:inline>
       // Run before painting; storage may be unavailable in private browsing.
       (() => {

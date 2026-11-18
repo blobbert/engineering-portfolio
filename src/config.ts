@@ -2,13 +2,14 @@
 export const siteConfig = {
   name: 'George Xue',
   tagline: 'Mechanical Engineering student at the University of Toronto · Mech 2T9 + PEY.',
-  description: "George Xue's engineering portfolio.",
+  description: 'Mechanical Engineering student at the University of Toronto exploring aircraft, robotics, and practical design through CAD, prototyping, and electronics.',
   eyebrow: 'Engineering portfolio',
   footerText: 'George Xue · Engineering portfolio',
   location: 'Toronto, Canada',
   // Paths here are relative to public/. Leave photo null to hide it.
   photo: null as null | { src: string; alt: string },
-  ogImage: '/images/social-placeholder.png',
+  ogImage: '/images/george-xue-social.png',
+  ogImageAlt: 'George Xue — Mechanical Engineering at the University of Toronto. Aircraft, robotics, and practical design.',
   nav: [
     { label: 'Home', href: '/' },
     { label: 'Projects', href: '/projects/' },
